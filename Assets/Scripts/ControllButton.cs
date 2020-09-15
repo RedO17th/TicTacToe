@@ -20,5 +20,6 @@ public class ControllButton : MonoBehaviour
     private void LoadTails()
     {
         gController.GetComponent<GController>().GetCountTail(tailsNumber);
+        gController.GetComponent<GController>().UnActiveScore();
     }
 }

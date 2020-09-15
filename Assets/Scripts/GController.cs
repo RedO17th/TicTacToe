@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class GController : MonoBehaviour
@@ -24,9 +25,12 @@ public class GController : MonoBehaviour
     public bool aiIsFirst = false;
     //public bool isAI = false;
 
+    [SerializeField] private Text txtScore;
+
     private void Awake()
     {
         sTile = GetComponent<SpawnerTile>();
+        
     }
     private void InitData()
     {
@@ -155,6 +159,12 @@ public class GController : MonoBehaviour
             {
                 //-------------------------------------------------------------------------------
                 Debug.Log("Выйигрыш у " + step);
+
+                txtScore.gameObject.SetActive(true);
+                if (step)
+                    txtScore.text = "Выигрыш у Крестиков";
+                else
+                    txtScore.text = "Выигрыш у Ноликов";
                 //foreach (int i in arr)
                 //    Debug.Log(i);
                 sTile.StopGame();
@@ -198,4 +208,9 @@ public class GController : MonoBehaviour
     //        sTile.StopGame();
     //    }
     //}
+    public void UnActiveScore()
+    {
+        txtScore.gameObject.SetActive(false);
+    }
+
 }
